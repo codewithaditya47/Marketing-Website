@@ -1,0 +1,322 @@
+:root {
+    --bg-color: #0d0f14;
+    --card-bg: rgba(255, 255, 255, 0.03);
+    --card-border: rgba(255, 255, 255, 0.08);
+    --accent: #D4AF37;
+    --accent-glow: rgba(212, 175, 55, 0.4);
+    --text-main: #f0f0f5;
+    --text-muted: #a0a5b5;
+    --primary: #4f80ff;
+    --primary-glow: rgba(79, 128, 255, 0.3);
+}
+
+* {
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+    font-family: 'Inter', sans-serif;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-main);
+    background-image: radial-gradient(circle at 15% 50%, rgba(79, 128, 255, 0.08), transparent 25%),
+        radial-gradient(circle at 85% 30%, rgba(212, 175, 55, 0.05), transparent 25%);
+    background-attachment: fixed;
+    min-height: 100vh;
+}
+
+.container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.titleblock {
+    height: 300px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    border-radius: 30px;
+    padding: 40px;
+    position: relative;
+    overflow: hidden;
+    margin-bottom: 20px;
+    background: linear-gradient(135deg, rgba(79, 128, 255, 0.1) 0%, rgba(13, 15, 20, 0) 100%);
+    border: 1px solid var(--card-border);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+}
+
+.titleblock::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.03) 0%, transparent 60%);
+    z-index: -1;
+    animation: rotate 20s linear infinite;
+}
+
+@keyframes rotate {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.titleblock .name {
+    font-size: 5rem;
+    font-weight: 800;
+    letter-spacing: 2px;
+    font-family: 'Outfit', sans-serif;
+    background: linear-gradient(to right, #fff, var(--text-muted));
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 0 0 40px rgba(255, 255, 255, 0.1);
+    margin-bottom: 15px;
+}
+
+.titleblock .subHeading {
+    font-size: 1.8rem;
+    font-weight: 400;
+    color: var(--accent);
+    letter-spacing: 1px;
+}
+
+.navigation {
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: 20px;
+    padding: 20px 30px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px 30px;
+    margin-bottom: 50px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    position: sticky;
+    top: 20px;
+    z-index: 100;
+}
+
+.navigation a {
+    color: var(--text-muted);
+    font-weight: 500;
+    font-size: 0.95rem;
+    text-decoration: none;
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    padding: 8px 16px;
+    border-radius: 12px;
+}
+
+.navigation a:hover {
+    color: #fff;
+    background: rgba(255, 255, 255, 0.05);
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    gap: 30px;
+    padding-bottom: 50px;
+}
+
+.items {
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: 24px;
+    overflow: hidden;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    display: flex;
+    flex-direction: column;
+}
+
+.items:hover {
+    transform: translateY(-10px);
+    border-color: rgba(255, 255, 255, 0.15);
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.4), 0 0 20px var(--primary-glow);
+}
+
+.items .heading {
+    font-family: 'Outfit', sans-serif;
+    font-weight: 700;
+    font-size: 1.8rem;
+    padding: 25px 30px;
+    margin: 0;
+    background: rgba(0, 0, 0, 0.2);
+    border-bottom: 1px solid var(--card-border);
+    color: #fff;
+    display: flex;
+    align-items: center;
+}
+
+.items .heading::before {
+    content: '';
+    display: inline-block;
+    width: 8px;
+    height: 24px;
+    background: var(--primary);
+    border-radius: 4px;
+    margin-right: 15px;
+    box-shadow: 0 0 10px var(--primary-glow);
+}
+
+.items .content {
+    padding: 30px;
+    color: var(--text-muted);
+    font-weight: 400;
+    line-height: 1.7;
+    flex-grow: 1;
+}
+
+.items .details {
+    margin-bottom: 15px;
+    font-size: 1.05rem;
+}
+
+span[style*="font-weight: bold"] {
+    color: #fff;
+    font-weight: 600 !important;
+}
+
+.story {
+    color: #fff;
+    font-family: 'Outfit', sans-serif;
+    font-size: 1.4rem;
+    margin: 30px 0 15px 0;
+    display: flex;
+    align-items: center;
+}
+
+.story::before {
+    content: "✦";
+    color: var(--accent);
+    margin-right: 10px;
+    font-size: 1.2rem;
+    text-shadow: 0 0 10px var(--accent-glow);
+}
+
+.benefit-block {
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 16px;
+    padding: 25px;
+    margin: 20px 0;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.benefits {
+    list-style: none;
+    padding-left: 0;
+}
+
+.points {
+    position: relative;
+    padding-left: 35px;
+    margin-bottom: 15px;
+    font-weight: 500;
+    color: var(--text-main);
+}
+
+.points:last-child {
+    margin-bottom: 0;
+}
+
+.points::before {
+    content: "✓";
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #10b981;
+    font-weight: bold;
+    background: rgba(16, 185, 129, 0.1);
+    width: 24px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    font-size: 0.8rem;
+}
+
+.one::before,
+.two::before {
+    content: "→";
+    color: var(--primary);
+    margin-right: 10px;
+    font-weight: bolder;
+}
+
+#Product,
+#Categories,
+#CustomPackaging,
+#Industries,
+#TechnicalSpecification,
+#Contact {
+    grid-column: 1 / -1;
+}
+
+#Product .heading::before {
+    background: #ec4899;
+    box-shadow: 0 0 10px rgba(236, 72, 153, 0.4);
+}
+
+#Categories .heading::before {
+    background: #8b5cf6;
+    box-shadow: 0 0 10px rgba(139, 92, 246, 0.4);
+}
+
+#CustomPackaging .heading::before {
+    background: #f59e0b;
+    box-shadow: 0 0 10px rgba(245, 158, 11, 0.4);
+}
+
+#Industries .heading::before {
+    background: #10b981;
+    box-shadow: 0 0 10px rgba(16, 185, 129, 0.4);
+}
+
+#Quality .heading::before {
+    background: #3b82f6;
+    box-shadow: 0 0 10px rgba(59, 130, 246, 0.4);
+}
+
+@media (max-width: 900px) {
+    .titleblock .name {
+        font-size: 3.5rem;
+    }
+
+    .titleblock .subHeading {
+        font-size: 1.4rem;
+    }
+
+    .grid-container {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 600px) {
+    .titleblock .name {
+        font-size: 2.5rem;
+    }
+
+    .navigation {
+        flex-direction: column;
+        text-align: center;
+    }
+}
